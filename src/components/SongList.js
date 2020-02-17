@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import uuid from 'uuid'
+import NewSongFrom from './NewSongForm'
 
 const SongList = () => {
   const [songs, setSongs] = useState([
@@ -8,9 +9,9 @@ const SongList = () => {
     { title: 'this wild darkness', id: 3}
   ])
 
-  const addSong = () => {
+  const addSong = (song) => {
     setSongs([...songs, {
-      title: 'new song',
+      title: song,
       id: uuid.v4() // this generates a random id
     }])
   }
@@ -28,7 +29,7 @@ const SongList = () => {
       <ul>
        {displaySongs} 
       </ul>
-      <button onClick={() => addSong()}>Add Song</button>
+      <NewSongFrom addSong={addSong}/>
     </div>
   )
 }
